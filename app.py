@@ -20,7 +20,7 @@ def init():
 # Reference your preloaded global model variable here.
 def inference(model_inputs:dict) -> dict:
     global model
-
+    xyz=0
     # Parse out your arguments
     prompt = model_inputs.get('prompt', None)
   
