@@ -30,7 +30,7 @@ def inference(model_inputs:dict) -> dict:
     
     # Run the model
     with autocast("cuda"):
-        image == model(prompt).images[0]  
+        image = model(prompt).images[0]  
     
     buffered = BytesIO()
     image.save(buffered,format="JPEG")
