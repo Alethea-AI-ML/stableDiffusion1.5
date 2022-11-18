@@ -30,6 +30,7 @@ def inference(model_inputs:dict) -> dict:
     
     # Run the model
     with autocast("cuda"):
+        print(prompt,"-------")
         image = model(prompt).images[0]  
     
     buffered = BytesIO()
