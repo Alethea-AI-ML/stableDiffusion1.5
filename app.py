@@ -4,7 +4,7 @@ from diffusers import StableDiffusionPipeline, LMSDiscreteScheduler
 import base64
 from io import BytesIO
 import os
-xyz=0
+
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
 def init():
@@ -14,7 +14,7 @@ def init():
     # this will substitute the default PNDM scheduler for K-LMS  
     #lms = LMSDiscreteScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear")
 
-    model = StableDiffusionPipeline.from_pretrained("AletheaAI/meeting", torch_dtype=torch.float16, revision="fp16", use_auth_token=HF_AUTH_TOKEN).to("cuda")
+    model = StableDiffusionPipeline.from_pretrained("AletheaAI/meeting", scheduler=lms, use_auth_token=HF_AUTH_TOKEN).to("cuda")
 
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
