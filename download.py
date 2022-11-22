@@ -16,8 +16,7 @@ def download_model():
     )
 
     model = StableDiffusionPipeline.from_pretrained(
-        "runwayml/stable-diffusion-v1-5", 
-        scheduler=lms,
+        "AletheaAI/meeting", torch_dtype=torch.float16, revision="fp16", 
         use_auth_token=HF_AUTH_TOKEN
     )
 
