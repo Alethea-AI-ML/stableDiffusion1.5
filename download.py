@@ -3,7 +3,6 @@
 
 from diffusers import StableDiffusionPipeline, LMSDiscreteScheduler
 import os
-import torch
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights at build time
@@ -17,7 +16,8 @@ def download_model():
     )
 
     model = StableDiffusionPipeline.from_pretrained(
-        "AletheaAI/meeting", torch_dtype=torch.float16, revision="fp16", 
+        "AletheaAI/meeting", 
+        scheduler=lms,
         use_auth_token=HF_AUTH_TOKEN
     )
 
